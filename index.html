@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Online - Comida Fitness</title>
+    <link rel="stylesheet" href="cardapio.css">
+</head>
+<body>
+
+    <header>
+        <h1>Restaurante Naturale</h1>
+        <p>Cardápio de comidas fitness para uma alimentação saudável!</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Pratos</h2>
+            <div class="item">
+                <img src="wrap.jpg" alt="Wrap Mediterrâneo">
+                <div class="info">
+                    <h3>Wrap Mediterrâneo</h3>
+                    <p>R$ 24,00</p>
+                    <button onclick="adicionarPedido('Wrap Mediterrâneo', 24)">Adicionar ao Pedido</button>
+                </div>
+            </div>
+            <div class="item">
+                <img src="quibe.jpg" alt="Quibe de Abóbora com coalhada seca">
+                <div class="info">
+                    <h3>Quibe de Abóbora com coalhada seca</h3>
+                    <p>R$ 32,00</p>
+                    <button onclick="adicionarPedido('Quibe de Abóbora com coalhada seca', 32)">Adicionar ao Pedido</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Bebidas</h2>
+            <div class="item">
+                <img src="vitamina.jpg" alt="Vitamina de Banana com Whey">
+                <div class="info">
+                    <h3>Vitamina de Banana com Whey</h3>
+                    <p>R$ 16,00</p>
+                    <button onclick="adicionarPedido('Vitamina de Banana com Whey', 14)">Adicionar ao Pedido</button>
+                </div>
+            </div>
+            <div class="item">
+                <img src="amendoas.jpg" alt="Smoothie de Amêndoas">
+                <div class="info">
+                    <h3>Smoothie de Amêndoas</h3>
+                    <p>R$ 18,00</p>
+                    <button onclick="adicionarPedido('Smoothie de Amêndoas', 18)">Adicionar ao Pedido</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Doces</h2>
+            <div class="item">
+                <img src="torta.jpg" alt="Torta de Cacau e Abacate">
+                <div class="info">
+                    <h3>Torta de Cacau e Abacate</h3>
+                    <p>R$ 13,00</p>
+                    <button onclick="adicionarPedido('Torta de Cacau e Abacate', 13)">Adicionar ao Pedido</button>
+                </div>
+            </div>
+            <div class="item">
+                <img src="sorbet.jpg" alt="Sorbet de Frutas">
+                <div class="info">
+                    <h3>Sorbet de Frutas</h3>
+                    <p>R$ 10,00</p>
+                    <button onclick="adicionarPedido('Sorbet de Frutas', 10)">Adicionar ao Pedido</button>
+                </div>
+            </div>
+        </section>
+
+        <button id="verPedido" onclick="redirecionarParaResumo()">Ver Resumo do Pedido</button>
+    </main>
+
+    <script>
+        let pedido = [];
+        let total = 0;
+
+        function adicionarPedido(nome, preco) {
+            pedido.push({ nome, preco });
+            total += preco;
+            alert(`${nome} adicionado ao pedido!`);
+            atualizarStorage();
+        }
+
+        function atualizarStorage() {
+            localStorage.setItem('pedido', JSON.stringify(pedido));
+            localStorage.setItem('total', total.toFixed(2));
+        }
+
+        function redirecionarParaResumo() {
+            window.location.href = "resumo.html";
+        }
+    </script>
+
+</body>
+</html>
